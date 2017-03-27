@@ -1,0 +1,66 @@
+import java.util.Hashtable;
+import java.util.Scanner;
+import java.util.ArrayList;
+/**
+ * Write a description of class Item here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Item
+{
+    class NoItemException extends Exception {}
+    private String primaryName;
+    private int weight;
+    private Hashtable<String,String> messages;
+    private ArrayList<Item> arrayItems;
+    
+    Item(Scanner s, Dungeon d) throws NoItemException,
+        Dungeon.IllegalDungeonFormatException {
+        this.messages = new Hashtable<>(); //Hashtable<verb,action>
+        primaryName = s.nextLine();                                           //1st
+        if(primaryName.equals(Dungeon.TOP_LEVEL_DELIM)){
+            throw new NoItemException(); //If "===" next line after "---".
+        }
+                             
+        weight = Integer.valueOf(s.nextLine());     //2nd //Converting String to Interger
+           
+        String[] action;
+            
+        String itemCommandLine = s.nextLine();                                //3rd
+        while(!itemCommandLine.equals(Dungeon.SECOND_LEVEL_DELIM) &&   
+              !itemCommandLine.equals(Dungeon.TOP_LEVEL_DELIM)) { //Not"==="or"---"
+                  action = itemCommandLine.split(":");        
+                  this.messages.put(action[0],action[1]);         //Fill hashtable
+                  itemCommandLine = s.nextLine();                             //4th
+        }
+    }    
+    public boolean goesBy(String name)
+    {
+        if(name.equals(primaryName))
+            return true;
+        else 
+            return false;
+    }
+    public String getPrimary()
+    {
+        return primaryName;
+    }
+    public int getWeight()
+    {
+        return weight;
+    }
+    public String getMessageForVerb(String verb)
+    {
+        return this.messages.get(verb);
+    }
+    public String toString()
+    {
+        
+        return "This room contains "+primaryName;
+    }
+    public String secondToString()
+    {
+        return ", "+primaryName;
+    }
+}
