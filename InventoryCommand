@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+/**
+ * Write a description of class InventoryCommand here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class InventoryCommand extends Command
+{
+    private static GameState state;
+    InventoryCommand()
+    {
+        
+    }
+    public String execute()
+    {
+        state = GameState.instance();
+        if(state.getInventoryNames().isEmpty()){
+             return "There is nothing in your inventory";
+            }
+        ArrayList<String> list = state.getInventoryNames();
+        String inventoryString = "Inventory: ";
+        
+        for(String name : list)
+                inventoryString += name + " ";
+        
+        
+        return inventoryString+".";
+    }
+}
