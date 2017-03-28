@@ -1,2 +1,35 @@
-Testing
-I will make files for all the classes I've made, add your code to corresponding classes.
+Overview Document:
+1. Introduction: Why we are writing this document and how it is organized.
+
+1.1. System Scope: Briefly describe the system we are building.
+
+1.2. Overview of the remainder of the document.
+
+2. Overall Description:
+
+2.1. A list and description of each of our supplementary features.
+
+2.2. Each one of us needs to write 2 use case write-ups, and two sequence diagrams.
+Neil:
+  Use case 1:
+  Use case 2:
+  Sequence diagram 1:
+  Sequence diagram 2:
+  
+Alexander:
+  Use case 1:
+  Use case 2:
+  Sequence diagram 1:
+  Sequence diagram 2:
+
+Eric:
+  Use case 1:
+  Use case 2:
+  Sequence diagram 1:
+  Sequence diagram 2:
+ 
+3. System Specification: Explain overall system design.
+
+3.1. UML class diagram
+
+3.2. .bork and .sav file format examples.
