@@ -4,11 +4,21 @@ Group Names: please type in your name under mine so I at least know you can edit
 
 Overview Document:
 1. Introduction: Why we are writing this document and how it is organized.
-
+    The functionality of this overview document is to provide a detailed outline of changes made since version 3 of bork. 
+ 
 1.1. System Scope: Briefly describe the system we are building.
 
-1.2. Overview of the remainder of the document.
-
+1.2.
+   Section 1. describes why we are writing this document and how it is organized.
+   Section 1.1. briefly describes the system that we built.
+   Section 1.2. provides descriptions of the individual sections within this document.
+   Section 2. is an overall description of the functionality of our code.
+   Section 2.1. lists and describes each of our supplementary features.
+   Section 2.2. contains two use case write-ups and two sequence diagrams per group member. 
+   Section 3. describes our system specifications and overall system design.
+   Section 3.1. shows our group's UML diagrams
+   Section 3.2. has examples of .bork and .sav file formats.
+   
 2. Overall Description:
 
 2.1. A list and description of each of our supplementary features.
