@@ -1,0 +1,18 @@
+/**
+ * Write a description of class UnknownCommand here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class UnknownCommand extends Command
+{
+    private String bogusCommand;
+    UnknownCommand(String bogusCommand)
+    {
+        this.bogusCommand = bogusCommand;
+    }
+    public String execute()
+    {
+        return "Unknown command '" + bogusCommand + "'\n";
+       }
+}
