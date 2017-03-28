@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+/**
+ * Write a description of class ItemSpecificCommand here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class ItemSpecificCommand extends Command
+{
+    private String verb;
+    private String noun;
+    private static GameState state;
+    
+    ItemSpecificCommand(String verb, String noun)
+    {
+        this.verb = verb;
+        this.noun = noun;
+        state = GameState.instance();
+    }
+    public String execute()
+    {
+        boolean accepted = false;
+        
+        ArrayList<Item> items = new ArrayList<Item>();
+        items = state.getAdventurersCurrentRoom().getContents();
+        for(Item item : items){
+            if(noun.equals(item.getPrimary())){
+                accepted = true;
+                if(item.getMessageForVerb(verb) != null){
+                    return item.getMessageForVerb(verb) + " ";
+                }
+            }
+        }
+        ArrayList<String> names = state.getInventoryNames();
+        for(String s : names){
+            if(noun.equals(s)){
+                accepted = true;
+                if (state.getDungeon().getItem(noun).getMessageForVerb(verb) != null){
+                    return state.getDungeon().getItem(noun).getMessageForVerb(verb) + " ";
+                }
+            }
+        }
+        
+        if(accepted==false){
+            return "You cannot perform that action on that item. ";
+        }
+        
+        return "Item not found. ";
+    }
+}
