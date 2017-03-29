@@ -4,12 +4,16 @@ Group Names: please type in your name under mine so I at least know you can edit
 
 Overview Document:
 1. Introduction: 
-      The functionality of this overview document is to provide a detailed outline of changes made since version 3 of bork. 
-    This document is divided into three sections; section one is an introduction to our program and how to use this document,
-    section two describes in detail the design and function of our code, listing features, case diagrams, and sequence diagrams,
-    section three shows system specifications relating to design structure and file formats. 
+    The functionality of this overview document is to provide a detailed outline of changes made since version 3 of bork.
+  This document is divided into three sections; section one is an introduction to our program and how to use this document,
+  section two describes in detail the design and function of our code, listing features, case diagrams, and sequence diagrams,
+  section three shows system specifications relating to design structure and file formats. 
     
 1.1. System Scope: Briefly describe the system we are building.
+    We are building a version of the popular text based game, zork. This verion of zork will take place in a dungeon called
+  "Area 51." In Area 51, you are able to travel through a 5 room dungeon at your own accord. Each room has distinct properties
+  that allow you to read descriptions of rooms and exits available, take items and add them to your inventory, and finally battle 
+  NPCs in a riveting game of rock, paper scissors. 
 
 1.2.
    Section 1. describes why we are writing this document and how it is organized.
