@@ -32,7 +32,8 @@ Overview Document:
 2.1. A list and description of each of our supplementary features.
   Supplementary Features:
     1. NPC: We are adding NPCs to every room in the dungeon, each NPC will be considred a "monster" and will have 1 health, when the health reaches
-    zero the NPC will "die" and dispear from the dungeon. For an NPc to lose their health they must lose in combat, when they lose they will 1 the one health/score they have and will "die".
+    zero the NPC will "die" and dispear from the dungeon. For an NPc to lose their health they must lose in combat, when they lose they will 1 the one health/score they have and will "die". 
+    All NPCs will drop health packs after you kill them, the health pack will contain a score of one and will add on to your current health/score
     
     2. Combat: We are adding the functianly to fight the NPCs in each dungeon, when the user first enters the dungeon they will engange in combat with 
     one of the NPCs placed in that dungeon, the fight will consist of a game of rock paper scissors, if the user wins, their score will increase by
