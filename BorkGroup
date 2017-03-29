@@ -31,9 +31,13 @@ Overview Document:
 
 2.1. A list and description of each of our supplementary features.
   Supplementary Features:
-    1. NPC:
+    1. NPC: We are adding NPCs to every room in the dungeon, each NPC will be considred a "monster" and will have 1 health, when the health reaches
+    zero the NPC will "die" and dispear from the dungeon. For an NPc to lose their health they must lose in combat, when they lose they will 1 the one health/score they have and will "die".
     
-    2. Combat:
+    2. Combat: We are adding the functianly to fight the NPCs in each dungeon, when the user first enters the dungeon they will engange in combat with 
+    one of the NPCs placed in that dungeon, the fight will consist of a game of rock paper scissors, if the user wins, their score will increase by
+    2 points(max score of 10), if the user loses, the user loses 2 points and the program will promt if you want to leave the room or fight the NPC again.
+    if the user and NPC tie then they will replay.
 
 2.2. Each one of us needs to write 2 use case write-ups, and two sequence diagrams.
 Neil:
@@ -43,10 +47,10 @@ Neil:
   Sequence diagram 2:
   
 Alexander:
-  Use case 1: Disappear
-  Use case 2: Teleport
-  Sequence diagram 1: Will remove an item from room
-  Sequence diagram 2: Will teleport player to desired location.
+  Use case 1:
+  Use case 2:
+  Sequence diagram 1:
+  Sequence diagram 2:
 
 Eric:
   Use case 1: Health
