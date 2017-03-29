@@ -46,8 +46,8 @@ Overview Document:
 
 2.2. Each one of us needs to write 2 use case write-ups, and two sequence diagrams.
 Neil:
-  Use case 1:
-  Use case 2:
+  Use case 1: Die: If score = zero you die and game will quit running, you lose the game, print a statement stating the user has died and has lost the game
+  Use case 2: Win: If score = 10 or more you “win” the game and the game quits running, print a statement stating the user has won the game
   Sequence diagram 1:
   Sequence diagram 2:
   
