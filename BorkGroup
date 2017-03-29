@@ -52,10 +52,10 @@ Neil:
   Sequence diagram 2:
   
 Alexander:
-  Use case 1:
-  Use case 2:
-  Sequence diagram 1:
-  Sequence diagram 2:
+  Use case 1: Disappear
+  Use case 2: Teleport
+  Sequence diagram 1: Item will be removed from the Room, Inventory, and Dungeon.
+  Sequence diagram 2: The User will be Teleported to the Room of their choice
 
 Eric:
   Use case 1: Health
