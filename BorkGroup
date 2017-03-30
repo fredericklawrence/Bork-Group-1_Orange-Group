@@ -186,6 +186,21 @@ Eric:
         Basement hallway
         ---
         ===
+        NPCs:
+        Eric
+        Basement hallway
+        ---
+        Neil
+        Stephen's office
+        ---
+        Alex
+        Room B6
+        ---
+        Steven
+        Rotunda balcony
+        ---
+        ===
+        
     
    .sav:
         Bork v3.0
@@ -194,17 +209,21 @@ Eric:
         Room states:
         Stephen's office:
         beenHere=true
+        NPC=true
         ---
         Room B6:
         beenHere=true
         Contents: DrPepper
+        NPC=true
         ---
         Basement hallway:
         beenHere=true
+        NPC=true
         ---
         Rotunda balcony:
         beenHere=false
         Contents: chainsaw,magicWand
+        NPC=true
         ---
         Rotunda:
         beenHere=true
