@@ -1,2 +1,89 @@
 Group Member Names:
 Eric Lawrence
+
+/**
+ * Returns the numeral score of the user
+ * 
+ * @author Eric Lawrence
+ * 
+ */
+public class ScoreCommand
+
+
+    /**
+     * Constructor for objects of class ScoreCommand
+     */
+    public ScoreCommand()
+    
+
+    /**
+     * Method returning user's score
+     * 
+     *
+     * @return     int score 
+     */
+    execute()
+    
+    ===================================================================
+    
+    
+/**
+ * HealthCommand returns a string corresponding to the current health of the user. 
+ * 
+ * @author Eric Lawrence
+ * 
+ */
+public class HealthCommand
+
+   
+    /**
+     * Constructor for objects of class HealthCommand
+     */
+    HealthCommand()
+ 
+
+    /**
+     * Method that return health description
+     * 
+     * 
+     * @return    Message describing health of user
+     */
+    execute()
+=======================================================================================
+
+/**
+ * BattleCommand, HealthCommand and ScoreCommand are used to instantiate
+ * commands.
+ * 
+ * @author Eric Lawrence 
+ * 
+ */
+public class BattleCommand extends Command
+
+    
+    private String battleChoice; //instance variable
+
+    /**
+     * Constructs and initializes instance variables
+     * for objects of class BattleCommand
+     * 
+     * @param battleChoice string inputted from user
+     */
+    BattleCommand(String battleChoice) 
+    
+  
+    
+
+    /**
+     * A method that returns a string based on if the user has won the game
+     * of rock, paper, scissors or not.
+     * 
+     * @param  y   a sample parameter for a method
+     * @return     a string regarding the outcome of the battle
+     */
+    public String execute()
+    
+        
+        
+    
+
