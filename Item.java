@@ -61,4 +61,42 @@ public class Item {
     {
         messages.remove(item);
     }
+    void transform(String item1Name, String item2Name) throws NoItemException
+    {
+        //this.disappear(item1);
+      
+       // GameState gs = GameState()
+       //remove item from dungeon hashtable?
+       Dungeon d=  GameState.instance().getDungeon();
+       for(String s: GameState.instance().getInventoryNames())
+       {
+           if(s.equals(item1Name))
+           {
+               GameState.instance().removeFromInventory(d.getItem(item1Name));
+               GameState.instance().addToInventory(d.getItem(item2Name));
+               
+           }
+               
+           
+       }
+       for(Item item:GameState.instance().getAdventurersCurrentRoom().getContents())
+       {
+           if (item.getPrimaryName().equals(item1Name))
+           {
+               GameState.instance().getAdventurersCurrentRoom().remove(d.getItem(item1Name));
+                GameState.instance().getAdventurersCurrentRoom().add(d.getItem(item2Name));
+           }
+                      
+
+       }
+      
+       
+     
+      // Item returnItem = d.getItem(item2Name);
+        
+        // is the new object in the items input in the dungeon?
+        // gets the new object from the hashtable of items in dungeon
+        //take the old item out of the dungeon and inev create new object 
+    
+    }
 }
