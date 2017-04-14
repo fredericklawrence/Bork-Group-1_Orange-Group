@@ -8,8 +8,7 @@ import java.io.PrintWriter;
 
 public class GameState {
     
-    private int health;
-    private int score;
+    
 
     public static class IllegalSaveFormatException extends Exception {
         public IllegalSaveFormatException(String e) {
@@ -29,6 +28,8 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
+     private int adventurerScore = 0;
+    private int adventurerHealth = 10;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -169,9 +170,17 @@ public class GameState {
     *@return int - returns health points
     *
     */
-    public int getAdveturersHealth()
-    {
-        return health;
+  public int getPlayerScore(){
+        return adventurerScore;
+    }
+    public int getPlayerHealth(){
+        return adventurerHealth;
+    }
+    public void setPlayerScore(int s){
+        adventurerScore = s;
+    }
+    public void setPlayerHealth(int h){
+        adventurerHealth = h;
     }
     
     /*
