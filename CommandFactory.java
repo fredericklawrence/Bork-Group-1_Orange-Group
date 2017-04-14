@@ -39,6 +39,13 @@ public class CommandFactory {
         if (parts.length == 2) {
             return new ItemSpecificCommand(verb, noun);
         }
+        if (verb.equals("health")){                         
+            return new HealthCommand(noun);
+        }
+        if (verb.equals("score")){                          
+            return new ScoreCommand(noun);
+        }
+        
         return new UnknownCommand(command);
     }
 }
