@@ -21,7 +21,7 @@ public class Interpreter {
         try {
             state = GameState.instance();
             
-            if (filename.endsWith(".bork")) {
+            if (filename.endsWith(".zork")) {
                 state.initialize(new Dungeon(filename));
                 System.out.println("\nWelcome to " + 
                     state.getDungeon().getName() + "!");
