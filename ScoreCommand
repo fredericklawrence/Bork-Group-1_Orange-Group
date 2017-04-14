@@ -1,0 +1,18 @@
+
+public class ScoreCommand extends Command{
+    public String score;
+    // instance variables - replace the example below with your own
+    private int x;
+
+    /**
+     * Constructor for objects of class ScoreCommand
+     */
+    public ScoreCommand(String s)
+    {
+       this.score = s;
+    }
+     String execute(){
+        return "Rank: " + GameState.instance().getPlayerScore() +"\n");
+    }
+    }
+}
