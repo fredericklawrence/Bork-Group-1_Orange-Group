@@ -1,5 +1,6 @@
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -18,7 +19,8 @@ public class NPC {
      */
     public NPC(Scanner s, Dungeon d)
     {
-    
+        s.next();
+        d = GameState.instance().getDungeon();
     }
      /**
      * Method used to initailize state of the NPC
@@ -26,7 +28,7 @@ public class NPC {
      */
     void init()
     {
-    
+        
     }
      /**
      * Method used for battle, a game of rock paper scissors, it takes the users input for the game 
@@ -36,7 +38,49 @@ public class NPC {
      */
     String battle(String command)
     {
-     return "";
+        int NPCOutcome = (int) (Math.random()+2);
+        
+        String rock = "rock";
+        String sissers = "sissers";
+        String paper = "paper";
+        
+        String NPCCommand = "";
+        if (NPCOutcome == 0)
+            NPCCommand = rock;
+        if(NPCOutcome == 1)
+            NPCCommand = paper;
+        if (NPCOutcome == 2)
+            NPCCommand = sissers;
+        
+        
+        if (command.equals("rock"))
+        {
+            if (NPCCommand.equals("rock"))
+                return"Draw";
+            if (NPCCommand.equals("paper"))
+                return"Paper Covers Rock. You Lose.";
+            if (NPCCommand.equals("sissers"))
+                return"Rock Smashes Sissers. You Win.";
+        }
+        if (command.equals("paper"))
+        {
+            if (NPCCommand.equals("rock"))
+                return"Paper Covers Rock. You Win.";
+            if (NPCCommand.equals("paper"))
+                return"Draw";
+            if (NPCCommand.equals("sissers"))
+                return"Sissers Cuts Paper. You Lose.";
+        }
+        if (command.equals("sissers"))
+        {
+            if (NPCCommand.equals("rock"))
+                return"Rock Smashes Sissers. You Lose.";
+            if (NPCCommand.equals("paper"))
+                return"Sissers Cuts Paper. You Win.";
+            if (NPCCommand.equals("sissers"))
+                return"Draw";
+        }
+        return null;
     }
      /**
      * Returns the adventurs Current Room
@@ -52,29 +96,41 @@ public class NPC {
      * Method that returns the name of the NPC
      * @return String - returns the name of the NPC
      */
-    String getName(){return "";}
+    String getName(){return name;}
     /**
      * 
      * Method that returns the description of the NPC
      * @return String - returns the desc instance varible declared in the contructor
      */
-    String getDesc(){return "";}
+    String getDesc(){return description;}
     /**
      * 
      * Method that stores the state of the NPC
      * @param w takes in a PrintWriter object to print the state of the object to
      */
-    void StoreState(PrintWriter w){}
+    void StoreState(PrintWriter w)
+    {
+       w.println("Name: " + name);
+       w.println(description);
+       w.println(occupiedRoom);
+    }
     /**
      * 
      * Method that restores the State of the NPC
      * @param r - takes in a scanner object to read in what state the NPc should restore from a save file
      */
-    void restoreState(Scanner r){}
+    void restoreState(Scanner r)
+    {
+        String line = r.nextLine();
+    }
     /**
      * 
      * Method that returns the current health of the NPC
      * @return int - returns the health instance varible
      */
-    int getHealth(){return 9;}
+    int getHealth()
+    {
+        int health = GameState.instance().getPlayerHealth();
+        return health;
+    }
 }
