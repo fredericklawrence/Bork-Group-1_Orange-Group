@@ -1,3 +1,5 @@
+ 
+
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.io.IOException;
@@ -180,6 +182,7 @@ public class Dungeon {
         }
         return items.get(primaryItemName);
     }
+}
     
     /*
     * @param takes in the NPC to be added.
