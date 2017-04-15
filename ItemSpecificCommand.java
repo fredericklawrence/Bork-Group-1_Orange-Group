@@ -1,3 +1,5 @@
+ 
+
 class ItemSpecificCommand extends Command {
 
     private String verb;
@@ -18,6 +20,10 @@ class ItemSpecificCommand extends Command {
             return "There's no " + noun + " here.";
         }
         
+        if(itemReferredTo.isEvent(verb)){
+            Event event = new Event(itemReferredTo, itemReferredTo.getEvent(verb));
+            return event.execute();
+        }
         String msg = itemReferredTo.getMessageForVerb(verb);
         return (msg == null ? 
             "Sorry, you can't " + verb + " the " + noun + "." : msg) + "\n";
