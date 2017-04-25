@@ -1,3 +1,6 @@
+
+ 
+
 import java.util.Scanner;
 import java.util.Hashtable;
 
@@ -8,13 +11,14 @@ public class Item {
     private String primaryName;
     private int weight;
     private Hashtable<String,String> messages;
+    private Hashtable<String,String> events;
 
 
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
         messages = new Hashtable<String,String>();
-
+        events = new Hashtable<String,String>();
         // Read item name.
         primaryName = s.nextLine();
         if (primaryName.equals(Dungeon.TOP_LEVEL_DELIM)) {
@@ -31,9 +35,13 @@ public class Item {
                 throw new Dungeon.IllegalDungeonFormatException("No '" +
                     Dungeon.SECOND_LEVEL_DELIM + "' after item.");
             }
-            String[] verbParts = verbLine.split(":");
-            messages.put(verbParts[0],verbParts[1]);
-            
+            if(verbLine.contains("[")){
+                String[] eventParts = verbLine.split("\\[");
+                events.put(eventParts[0], eventParts[1]);
+            }else{
+                String[] verbParts = verbLine.split(":");
+                messages.put(verbParts[0],verbParts[1]);
+            }
             verbLine = s.nextLine();
         }
     }
@@ -53,50 +61,11 @@ public class Item {
         return primaryName;
     }
     
-    /*
-    *@param Takes item from Hashtable messages.
-    * Method that removes item from the game.
-    */
-    void disappear(Item item)
-    {
-        messages.remove(item);
+    public boolean isEvent(String e){
+        return events.containsKey(e);
     }
-    void transform(String item1Name, String item2Name) throws NoItemException
-    {
-        //this.disappear(item1);
-      
-       // GameState gs = GameState()
-       //remove item from dungeon hashtable?
-       Dungeon d=  GameState.instance().getDungeon();
-       for(String s: GameState.instance().getInventoryNames())
-       {
-           if(s.equals(item1Name))
-           {
-               GameState.instance().removeFromInventory(d.getItem(item1Name));
-               GameState.instance().addToInventory(d.getItem(item2Name));
-               
-           }
-               
-           
-       }
-       for(Item item:GameState.instance().getAdventurersCurrentRoom().getContents())
-       {
-           if (item.getPrimaryName().equals(item1Name))
-           {
-               GameState.instance().getAdventurersCurrentRoom().remove(d.getItem(item1Name));
-                GameState.instance().getAdventurersCurrentRoom().add(d.getItem(item2Name));
-           }
-                      
-
-       }
-      
-       
-     
-      // Item returnItem = d.getItem(item2Name);
-        
-        // is the new object in the items input in the dungeon?
-        // gets the new object from the hashtable of items in dungeon
-        //take the old item out of the dungeon and inev create new object 
-    
+   
+    public String getEvent(String e){
+        return events.get(e);
     }
 }

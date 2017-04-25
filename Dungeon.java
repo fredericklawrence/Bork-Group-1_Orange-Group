@@ -1,3 +1,4 @@
+
  
 
 import java.util.Hashtable;
@@ -6,6 +7,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.util.Random;
 
 public class Dungeon {
 
@@ -32,6 +34,7 @@ public class Dungeon {
     private Room entry;
     private Hashtable<String,Room> rooms;
     private Hashtable<String,Item> items;
+    private Hashtable<String,NPC> npcs;
     private String filename;
 
     Dungeon(String name, Room entry) {
@@ -115,7 +118,23 @@ public class Dungeon {
                 Exit exit = new Exit(s, this);
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
-
+       
+        boolean end = true;
+        s.nextLine(); //throw away NPC starter
+        
+        while(end){
+            String name = s.nextLine();
+        
+            if(!name.equals(TOP_LEVEL_DELIM)&&!name.equals(SECOND_LEVEL_DELIM)){
+                String room = s.nextLine();
+                NPC npc = new NPC(name, room, this);
+            }else if(name.equals(TOP_LEVEL_DELIM)){
+                end = false;
+                break;
+            }
+            
+        }
+          
         s.close();
     }
     
@@ -164,12 +183,14 @@ public class Dungeon {
     public String getName() { return name; }
     public String getFilename() { return filename; }
     public void add(Room room) { rooms.put(room.getTitle(),room); }
-    public void add(Item item) { items.put(item.getPrimaryName(),item); }
-
+    public void add(Item item) { items.put(item.getPrimaryName  (),item); }
+   
+    
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
 
+    
     /**
      * Get the Item object whose primary name is passed. This has nothing to
      * do with where the Adventurer might be, or what's in his/her inventory,
@@ -182,25 +203,9 @@ public class Dungeon {
         }
         return items.get(primaryItemName);
     }
-}
-    
-    /*
-    * @param takes in the NPC to be added.
-    * Method that add NPC to the dungeon
-    */
-    public void addNPC(NPC npc)
-    {
-        
-    }
-    
-    /*
-    * @param takes in the name of the NPC
-    * Method that returns the specified NPC
-    * @return NPC - returns NPC
-    */
-    public NPC getNPC(String name)
-    {
-        NPC npc = null;
-        return npc;
+     public Room getRandomRoom(){
+   	 Object[] keys = rooms.keySet().toArray();
+    	Object key = keys[new Random().nextInt(keys.length)];
+    	return rooms.get(key);
     }
 }

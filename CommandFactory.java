@@ -1,4 +1,6 @@
 
+ 
+
 import java.util.List;
 import java.util.Arrays;
 
@@ -45,6 +47,9 @@ public class CommandFactory {
         }
         if (verb.equals("score")){                          
             return new ScoreCommand(noun);
+        }
+        if (verb.equals("battle")){                          
+            return new BattleCommand();
         }
         
         return new UnknownCommand(command);

@@ -1,3 +1,6 @@
+
+ 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
@@ -14,6 +17,8 @@ public class Room {
     private boolean beenHere;
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
+    private ArrayList<NPC> npcs;
+    private NPC theNPC;
 
     Room(String title) {
         init();
@@ -79,6 +84,7 @@ public class Room {
 
     // Common object initialization tasks.
     private void init() {
+        npcs = new ArrayList<NPC>();
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
@@ -140,6 +146,9 @@ public class Room {
         for (Item item : contents) {
             description += "\nThere is a " + item.getPrimaryName() + " here.";
         }
+        if(theNPC!=null)
+            description += "\n" + theNPC.getName()+" is here and wants you to type in 'battle'!";
+        
         if (contents.size() > 0) { description += "\n"; }
         if (!beenHere) {
             for (Exit exit : exits) {
@@ -183,4 +192,31 @@ public class Room {
     ArrayList<Item> getContents() {
         return contents;
     }
+     void add(NPC npc){
+         theNPC = npc;
+         //npcs.add(npc);
+    }
+    
+    void remove(NPC npc){
+        theNPC = null;
+        //npcs.remove(npc);
+    }
+   
+    NPC getNPCInside(){
+        return theNPC;
+    }
+    
+    NPC getNPCNamed(String name){ 
+        for (NPC npc : npcs) {
+            if (npc.isNamed(name)) {
+                return npc;
+            }
+        }
+        return null;
+    }
+    
+    ArrayList<NPC> getNPCs(){
+        return npcs;
+    }
 }
+

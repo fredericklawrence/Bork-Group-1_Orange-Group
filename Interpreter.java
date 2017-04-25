@@ -1,3 +1,6 @@
+
+ 
+
 import java.util.Scanner;
 
 
@@ -5,7 +8,7 @@ public class Interpreter {
 
     private static GameState state; // not strictly necessary; GameState is 
                                     // singleton
-
+    public static boolean endGame = false;
     public static String USAGE_MSG = 
         "Usage: Interpreter borkFile.bork|saveFile.sav.";
 
@@ -38,9 +41,14 @@ public class Interpreter {
                 state.getAdventurersCurrentRoom().describe() + "\n");
 
             command = promptUser(commandLine);
-
+            
             while (!command.equals("q")) {
-
+                if(state.getPlayerScore() >=10){
+                    System.out.println("You have earned enough points to win!"); break;}
+                if(state.getPlayerHealth() <= 0){
+                    System.out.println("Your health has reached zero, you die."); break;}
+                    
+                
                 System.out.print(
                     CommandFactory.instance().parse(command).execute());
 

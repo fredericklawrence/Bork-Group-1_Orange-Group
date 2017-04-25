@@ -1,6 +1,8 @@
-abstract class Command 
-{
+
+ 
+
+abstract class Command {
 
     abstract String execute();
-    
+
 }

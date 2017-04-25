@@ -1,3 +1,6 @@
+
+ 
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
@@ -7,8 +10,6 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 public class GameState {
-    
-    
 
     public static class IllegalSaveFormatException extends Exception {
         public IllegalSaveFormatException(String e) {
@@ -16,6 +17,7 @@ public class GameState {
         }
     }
 
+    
     static String DEFAULT_SAVE_FILE = "bork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
     static String SAVE_FILE_VERSION = "Bork v3.0 save data";
@@ -28,9 +30,9 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-     private int adventurerScore = 0;
+    private int adventurerScore = 0;
     private int adventurerHealth = 10;
-
+    
     static synchronized GameState instance() {
         if (theInstance == null) {
             theInstance = new GameState();
@@ -50,7 +52,8 @@ public class GameState {
         if (!s.nextLine().equals(SAVE_FILE_VERSION)) {
             throw new IllegalSaveFormatException("Save file not compatible.");
         }
-
+        adventurerScore = Integer.parseInt(s.nextLine());
+        adventurerHealth = Integer.parseInt(s.nextLine());
         String dungeonFileLine = s.nextLine();
 
         if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
@@ -89,6 +92,8 @@ public class GameState {
     void store(String saveName) throws IOException {
         String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
+        w.println(adventurerScore);
+        w.println(adventurerHealth);
         w.println(SAVE_FILE_VERSION);
         dungeon.storeState(w);
         w.println(ADVENTURER_MARKER);
@@ -156,21 +161,13 @@ public class GameState {
     Room getAdventurersCurrentRoom() {
         return adventurersCurrentRoom;
     }
-
     void setAdventurersCurrentRoom(Room room) {
         adventurersCurrentRoom = room;
     }
-
     Dungeon getDungeon() {
         return dungeon;
     }
-    /*
-    *Method that returns the number of health points that
-    *the player has
-    *@return int - returns health points
-    *
-    */
-  public int getPlayerScore(){
+    public int getPlayerScore(){
         return adventurerScore;
     }
     public int getPlayerHealth(){
@@ -182,32 +179,5 @@ public class GameState {
     public void setPlayerHealth(int h){
         adventurerHealth = h;
     }
-    
-    /*
-    * @param takes in the points gained by the player
-    * Metnod that adds up score. 
-    */ 
-    void addScore(int score)
-    {
-        this.score+=score;
-    }
-    
-    /*
-    * @param takes in the damage inflicted onto the player
-    * Method that takes away helath points due to 
-    * damage substained by the player.
-    */
-    void addWound(int wound)
-    {
-        health -= wound;
-    }
-    
-    /*
-    * @param Takes in the NPC to be removed. 
-    * Method that removes the NPC from the game. 
-    */
-    void removeNPC(NPC npc)
-    {
-        
-    }
+   
 }
